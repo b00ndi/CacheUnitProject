@@ -17,11 +17,11 @@ public class DataModel<T> extends java.lang.Object implements java.io.Serializab
 	
 	public T getContent() { return content; }
 	
+	public void setContent(T content) { this.content = content; }
+	
 	public java.lang.Long getDataModelId() { return id; }
 	
-	public int hashCode() { return 0; }
-	
-	public void setContent(T content) { this.content = content; }
+	public int hashCode() { return this.hashCode(); }
 	
 	public void setDataModelId(java.lang.Long id) { this.id = id; }
 	
