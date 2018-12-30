@@ -1,11 +1,13 @@
 package com.hit.server;
 
-public class Request<T> extends java.lang.Object
-implements java.io.Serializable
+import java.io.Serializable;
+import java.util.Map;
+
+public class Request<T> implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
-	public Request(java.util.Map<java.lang.String, java.lang.String> header,
+	public Request(Map<String, String> header,
 			T body)
 	{
 		
@@ -16,7 +18,7 @@ implements java.io.Serializable
 		return null;
 	}
 	
-	public java.util.Map<java.lang.String, java.lang.String> getHeaders()
+	public Map<String, String> getHeaders()
 	{
 		return null;
 	}
@@ -26,7 +28,7 @@ implements java.io.Serializable
 		
 	}
 	
-	public java.lang.String toString()
+	public String toString()
 	{
 		return null;
 	}

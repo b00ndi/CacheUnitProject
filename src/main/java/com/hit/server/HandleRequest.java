@@ -1,11 +1,12 @@
 package com.hit.server;
 
+import java.net.Socket;
+
 import com.hit.services.CacheUnitController;
 
-public class HandleRequest<T> extends java.lang.Object
-implements java.lang.Runnable
+public class HandleRequest<T> implements Runnable
 {
-	public HandleRequest(java.net.Socket s, CacheUnitController<T> controller)
+	public HandleRequest(Socket socket, CacheUnitController<T> controller)
 	{
 		
 	}
@@ -14,6 +15,5 @@ implements java.lang.Runnable
 	public void run()
 	{
 		
-	}
-	
+	}	
 }

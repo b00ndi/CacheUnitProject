@@ -1,8 +1,10 @@
 package com.hit.server;
 
-public class Response<T> extends java.lang.Object
+import java.util.Map;
+
+public class Response<T>
 {
-	public Response(java.util.Map<java.lang.String, java.lang.String> headers,
+	public Response(Map<String, String> headers,
 			T body)
 	{
 		
@@ -13,22 +15,22 @@ public class Response<T> extends java.lang.Object
 		return null;
 	}
 	
-	public java.util.Map<java.lang.String,java.lang.String> getHeaders()
-	{
-		return null;
-	}
-	
 	public void setBody()
 	{
 		
 	}
 	
-	public void setString(java.util.Map<java.lang.String,java.lang.String> headers)
+	public Map<String,String> getHeaders()
+	{
+		return null;
+	}
+	
+	public void setString(Map<String,String> headers)
 	{
 		
 	}
 	
-	public java.lang.String toString()
+	public String toString()
 	{
 		return null;
 	}

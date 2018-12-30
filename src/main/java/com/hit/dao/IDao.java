@@ -1,8 +1,9 @@
 package com.hit.dao;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-public interface IDao<ID extends java.io.Serializable, T>
+public interface IDao<ID extends Serializable, T>
 {
 	public void delete(T entity);
 	

@@ -1,16 +1,20 @@
 package com.hit.server;
 
-public class CacheUnitServerDriver extends java.lang.Object
+import com.hit.util.CLI;
+
+public class CacheUnitServerDriver
 {
 	public CacheUnitServerDriver()
 	{
 		
 	}
 	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public static void main(String[] args)
+	{
+		CLI cli = new CLI(System.in, System.out);
+		Server server = new Server(34567);
+		
+		cli.addPropertyChangeListener(server);
+		new Thread(cli).start();
 	}
-
 }

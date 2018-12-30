@@ -11,15 +11,15 @@ import java.util.LinkedHashMap;
 
 import com.hit.dm.DataModel;
 
-public class DaoFileImpl<T> implements IDao<java.lang.Long, DataModel<T>>
+public class DaoFileImpl<T> implements IDao<Long, DataModel<T>>
 {
-	private final java.lang.String filePath;
+	private final String filePath;
 	private final int capacity;
 	private File file;
 	
 	private LinkedHashMap<Long, DataModel<T>> map;
 
-	public DaoFileImpl(java.lang.String filepath, int capacity)
+	public DaoFileImpl(String filepath, int capacity)
 	{
 		this.filePath = filepath;
 		this.capacity = capacity;
@@ -28,7 +28,7 @@ public class DaoFileImpl<T> implements IDao<java.lang.Long, DataModel<T>>
 		this.map = null;
 	}
 	
-	public DaoFileImpl(java.lang.String filepath)
+	public DaoFileImpl(String filepath)
 	{
 		this(filepath, 10);
 	}

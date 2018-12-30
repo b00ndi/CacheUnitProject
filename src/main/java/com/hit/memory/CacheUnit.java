@@ -9,19 +9,19 @@ import com.hit.algorithm.IAlgoCache;
 import com.hit.dao.IDao;
 import com.hit.dm.DataModel;
 
-public class CacheUnit<T> extends java.lang.Object
+public class CacheUnit<T>
 {
-	private IAlgoCache<java.lang.Long, DataModel<T>> algo;
-	private IDao<java.lang.Long, DataModel<T>> dao;
+	private IAlgoCache<Long, DataModel<T>> algo;
+	private IDao<Long, DataModel<T>> dao;
 	
-	CacheUnit(com.hit.algorithm.IAlgoCache<java.lang.Long, DataModel<T>> algo,
+	public CacheUnit(IAlgoCache<Long, DataModel<T>> algo,
 			IDao<java.lang.Long, DataModel<T>> dao)
 	{
 		this.algo = algo;
 		this.dao = dao;
 	}
 	
-	public DataModel<T>[] getDataModels(java.lang.Long[] ids)
+	public DataModel<T>[] getDataModels(Long[] ids)
 	{
 		List<DataModel<T>> list = new LinkedList<DataModel<T>>();
 		
@@ -32,7 +32,7 @@ public class CacheUnit<T> extends java.lang.Object
 		// adds the necessary datamodel to the cache.
 		// If the datamodel exists in cache then it is added to the list.
 
-		for (java.lang.Long id : ids)
+		for (Long id : ids)
 		{
 			DataModel<T> value = algo.getElement(id);
 			
@@ -107,9 +107,9 @@ public class CacheUnit<T> extends java.lang.Object
 		return list.toArray(new DataModel[list.size()]);
 	}
 	
-	void removeDataModels(java.lang.Long[] ids)
+	public void removeDataModels(Long[] ids)
 	{
-		for (java.lang.Long id : ids)
+		for (Long id : ids)
 		{
 			algo.removeElement(id);
 			//dao.delete(entity);
