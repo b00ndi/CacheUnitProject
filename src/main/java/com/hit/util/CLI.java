@@ -9,63 +9,73 @@ import java.util.Scanner;
 
 public class CLI implements Runnable
 {
-	private PrintWriter pw;
+	private PrintWriter printWriter;
 	private Scanner scanner;
 	private StatusCodes state;
 
-		private PropertyChangeSupport proprtyChanger;
+		private PropertyChangeSupport propertyChanger;
 
 	//Constructor
 	public CLI(InputStream in, OutputStream out)
 	{
-		this.pw = new PrintWriter(out);
+		this.printWriter = new PrintWriter(out);
 		this.scanner = new Scanner(in);
-		this.proprtyChanger = new PropertyChangeSupport(this);
+		this.propertyChanger = new PropertyChangeSupport(this);
 		StatusCodes state = StatusCodes.STANDBY;
 	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener pcl)
 	{
-		proprtyChanger.addPropertyChangeListener(pcl);
+		propertyChanger.addPropertyChangeListener(pcl);
 	}
 	
 	public void removePropertyChangeListener(PropertyChangeListener pcl)
 	{
-		proprtyChanger.removePropertyChangeListener(pcl);
+		propertyChanger.removePropertyChangeListener(pcl);
 	}
 
 	@Override
-	public void run() {
-		String command, algo="LRU";
-		int amount=20;
+	public void run()
+	{
+		String command, algo = "LRU";
+		int capacity = 20;
 
-		write("Default parameters are: algo=" +algo+ " ,amount=" +amount);
+		write("Default parameters\nAlgorithm: " + algo + " Capacity: " + capacity);
 
 		command = scanner.next().toLowerCase();
+		
 		while (!command.equals("shutdown"))
 		{
-			switch (command){
+			switch (command)
+			{
 				case "start":
-					write("Starting server.......");
-					proprtyChanger.firePropertyChange("stateChange", this.state, StatusCodes.START);
+					write("Starting server...");
+					propertyChanger.firePropertyChange("stateChange", this.state, StatusCodes.START);
+					
 					break;
+					
 				case "cache_unit_config":
 					algo = scanner.next();
-					amount = scanner.nextInt();
-					write("algo =" +algo + " amount=" +amount);
+					capacity = scanner.nextInt();
+					write("Algorithm:" +algo + " Capacity: " +capacity);
+					
 					break;
+					
 				default:
 					write("Not a valid command");
+					
 					break;
 			}
+			
 			command = scanner.next().toLowerCase();
 		}
+		
 		write("Shutting Down");
 	}
 
 	//Write status for the user via OUT
 	public void write(String string)
 	{
-		pw.write(string);
+		printWriter.write(string);
 	}
 }

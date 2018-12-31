@@ -24,14 +24,16 @@ public class Server implements PropertyChangeListener, Runnable
 	@Override
 	public void run()
 	{
-		while (true) {
-			try {
-				this.serverSocket = new ServerSocket(port);
-				Socket clientSock = serverSocket.accept();
-				manageConections(clientSock);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		try
+		{
+			this.serverSocket = new ServerSocket(port);
+			Socket clientSocket = serverSocket.accept();
+			
+			manageConections(clientSocket);
+			
+		} catch (IOException e)
+		{
+			e.printStackTrace();
 		}
 	}
 
@@ -47,6 +49,7 @@ public class Server implements PropertyChangeListener, Runnable
 			{
 				run();
 			}
+			
 			else
 				System.out.println("not good");
 		}
